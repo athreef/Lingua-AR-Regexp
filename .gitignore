@@ -1,0 +1,6 @@
+.build/
+*.sw*
+.DS_Store
+Lingua-AR-Regexp-*/
+Lingua-AR-Regexp-*.tar.gz
+
