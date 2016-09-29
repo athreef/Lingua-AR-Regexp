@@ -24,8 +24,8 @@ Lingua::AR::Regexp - Regular Expression character classes for Arabic
     use utf8;
 
     $_ = 'جزئ';
-    say 'Has a Hamza' if /\P{Lingua::AR::Regexp::IsHamza}/;
-    say 'Hamza fixed' if s/(?=\P{Lingua::AR::Regexp::IsSplitting})ئ/ء/;
+    say 'Has a Hamza' if /\p{Lingua::AR::Regexp::IsHamza}/;
+    say 'Hamza fixed' if s/(?<=\p{Lingua::AR::Regexp::IsSplitting})ئ‎/ء/g;
 
 =head1 DESCRIPTION
 
@@ -44,6 +44,14 @@ sub IsHamza {
         'ARABIC HAMZA ABOVE',
         'ARABIC MADDAH ABOVE',
         'ARABIC HAMZA BELOW',
+
+        'ARABIC LETTER WAW WITH HAMZA ABOVE',
+        'ARABIC LETTER ALEF WITH MADDA ABOVE',
+        'ARABIC LETTER ALEF WITH HAMZA ABOVE',
+        'ARABIC LETTER ALEF WITH HAMZA BELOW',
+        'ARABIC LETTER ALEF',
+        'ARABIC LETTER YEH WITH HAMZA ABOVE',
+        'ARABIC LETTER HAMZA',
     );
 }
 
