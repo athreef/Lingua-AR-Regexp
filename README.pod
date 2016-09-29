@@ -24,7 +24,19 @@ Lingua::AR::Regexp - Regular Expression character classes for Arabic
 
 =item IsHamza
 
-Check whether character is a Hamza (Including maddas)
+Check whether character is or has a Hamza (Including maddas)
+
+=item IsTashkeel
+
+Check whether character is Tashkeel (short vowels)
+
+=item IsHamzaMark
+
+Check whether character is a Non spacing mark (C<\p{Mn}>) Hamza (Including maddas)
+
+=item IsLetterWithHamza
+
+Check whether character has a Hamza (Including maddas)
 
 =item IsSplitting
 

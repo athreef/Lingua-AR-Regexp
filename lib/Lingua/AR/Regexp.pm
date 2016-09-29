@@ -35,16 +35,53 @@ Lingua::AR::Regexp - Regular Expression character classes for Arabic
 
 =item IsHamza
 
-Check whether character is a Hamza (Including maddas)
+Check whether character is or has a Hamza (Including maddas)
 
 =cut
 
 sub IsHamza {
     return Regexp::CharClasses::Helper::fmt(
+        '+'.__PACKAGE__.'::IsHamzaMark',
+        '+'.__PACKAGE__.'::IsLetterWithHamza',
+    );
+}
+
+=item IsTashkeel
+
+Check whether character is Tashkeel (short vowels)
+
+=cut
+
+sub IsTashkeel {
+    return Regexp::CharClasses::Helper::fmt(
+        '+utf8::Mn',
+        '&utf8::InArabic',
+        '-'.__PACKAGE__.'::IsHamzaMark'
+    );
+}
+
+=item IsHamzaMark
+
+Check whether character is a Non spacing mark (C<\p{Mn}>) Hamza (Including maddas)
+
+=cut
+
+sub IsHamzaMark {
+    return Regexp::CharClasses::Helper::fmt(
         'ARABIC HAMZA ABOVE',
         'ARABIC MADDAH ABOVE',
         'ARABIC HAMZA BELOW',
+    );
+}
 
+=item IsLetterWithHamza
+
+Check whether character has a Hamza (Including maddas)
+
+=cut
+
+sub IsLetterWithHamza {
+    return Regexp::CharClasses::Helper::fmt(
         'ARABIC LETTER WAW WITH HAMZA ABOVE',
         'ARABIC LETTER ALEF WITH MADDA ABOVE',
         'ARABIC LETTER ALEF WITH HAMZA ABOVE',
